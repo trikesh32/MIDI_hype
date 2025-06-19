@@ -3,13 +3,14 @@ from JUNOg import JUNOG_main
 from X3 import X3_main
 from VK7 import VK7_main
 from xp60 import XP60_main
+from boss_ve500 import boss_ve500_main
 from pathlib import Path
 from pyperclip import copy
 
-ids = {0: "junog", 1: "xp60", 2: "vk7", 3: "tr", 4: "x3"}
+ids = {0: "junog", 1: "xp60", 2: "vk7", 3: "tr", 4: "x3", 5: "boss_ve500"}
 dump = {i: [] for i in range(len(ids))}
 que = []
-funcs = {0: JUNOG_main, 1: XP60_main, 2: VK7_main, 3: TR_main, 4: X3_main}
+funcs = {0: JUNOG_main, 1: XP60_main, 2: VK7_main, 3: TR_main, 4: X3_main, 5: boss_ve500_main}
 def print_res(result):
     res_text = ""
     f = open(f"{Path.home()}/Desktop/dump.txt", "w+")
@@ -37,7 +38,7 @@ def print_dump():
 
 
 def add_synt():
-    print("0: junog, 1: xp60, 2: vk7, 3: tr, 4: x3")
+    print("0: junog, 1: xp60, 2: vk7, 3: tr, 4: x3, 5: boss_ve500")
     synt_id = int(input("Введите номер синтезатора: "))
     print()
     if synt_id not in que:
