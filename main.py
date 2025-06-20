@@ -16,7 +16,7 @@ def print_res(result):
     f = open(f"{Path.home()}/Desktop/dump.txt", "w+")
     for res in result:
         for _ in res:
-            res_text += "0" * (2 - (len(hex(_)) - 2)) + hex(_)[2:] + " "
+            res_text += f"{_:02X} "
         res_text+="\n"
     f.write(res_text)
     f.close()
@@ -29,7 +29,7 @@ def print_dump():
     for synt_id in que:
         for res in dump[synt_id]:
             for _ in res:
-                res_text += "0" * (2 - (len(hex(_)) - 2)) + hex(_)[2:] + " "
+                res_text += f"{_:02X} "
             res_text += "\n"
     f.write(res_text)
     f.close()
@@ -38,7 +38,7 @@ def print_dump():
 
 
 def add_synt():
-    print("0: junog, 1: xp60, 2: vk7, 3: tr, 4: x3, 5: boss_ve500")
+    print("0: junog\n1: xp60\n2: vk7\n3: tr\n4: x3\n5: boss_ve500")
     synt_id = int(input("Введите номер синтезатора: "))
     print()
     if synt_id not in que:
@@ -49,7 +49,7 @@ def add_synt():
 
 def change_order():
     global que
-    print("Нынеший порядок: ")
+    print("Нынешний порядок: ")
     for i in que:
         print(f"{i}: {ids[i]}")
     print()
@@ -58,16 +58,23 @@ def change_order():
 
 def change_settings():
     for i in que:
-        print(f"{i}: {ids[i]}", end=" ")
+        print(f"{i}: {ids[i]}")
     print()
-    synt_id = int(input("Введите id синтезатора: "))
+    synt_id = int(input("Введите номер синтезатора: "))
     dump[synt_id] = funcs[synt_id]()
+
+def print_que():
+    global que
+    print("Нынешний порядок: ")
+    for i in que:
+        print(f"{i}: {ids[i]}")
+    print()
 
 
 def main():
     while True:
         print(
-            "0. печать существующего дампа\n1. добавить синтезатор\n2. изменить порядок вывода дампа\n3. изменить настройки синтезатора")
+            "0. печать существующего дампа\n1. добавить синтезатор\n2. изменить порядок вывода дампа\n3. изменить настройки синтезатора\n4. просмотреть нынешний порядок")
         mode = int(input("Ввод: "))
 
         if mode == 0:
@@ -78,6 +85,8 @@ def main():
             change_order()
         elif mode == 3:
             change_settings()
+        elif mode == 4:
+            print_que()
         else:
             print("Ошибка")
 
