@@ -1,4 +1,4 @@
-DEFAULT_MIDI_CHANNEL = 12
+DEFAULT_MIDI_CHANNEL = 13
 def create_dump(midi_channel, mode, prog_num):
     return [0xB0 + midi_channel, 0, mode, 0xB0 + midi_channel, 0x20, 0, 0xC0 + midi_channel, prog_num]
 
@@ -30,10 +30,10 @@ def user_patches():
 def boss_ve500_main():
     print("ИДЕТ НАСТРОЙКА BOSS VE-500")
     try:
-        midi_channel = int(input("Введите номер MIDI канала (по умолчанию 12): "))
+        midi_channel = int(input("Введите номер MIDI канала (по умолчанию 13): ")) - 1
     except Exception:
-        midi_channel = DEFAULT_MIDI_CHANNEL
-    print("ВЫБРАН MIDI КАНАЛ: ", midi_channel)
+        midi_channel = DEFAULT_MIDI_CHANNEL - 1
+    print("ВЫБРАН MIDI КАНАЛ: ", midi_channel + 1)
     while True:
         try:
             mode = int(input("1. Factory patches\n2. User patches\nВаш выбор: "))
