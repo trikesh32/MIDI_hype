@@ -1,0 +1,2 @@
+[console_scripts]
+midi-hype = midi_hype.app:main

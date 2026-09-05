@@ -1,3 +1,14 @@
+Metadata-Version: 2.4
+Name: midi-hype
+Version: 0.1.0
+Summary: GUI tool for generating MIDI/SysEx dumps for synthesizers
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: PySide6>=6.7
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Requires-Dist: pyinstaller>=6; extra == "dev"
+
 # MIDI Hype
 
 MIDI Hype — приложение для генерации MIDI/SysEx dump-сообщений для нескольких синтезаторов и процессоров.
@@ -65,20 +76,6 @@ pyinstaller packaging/pyinstaller_macos.spec --noconfirm --clean
 ```
 
 Результат появится в `dist/MIDI Hype.app`.
-
-## GitHub Actions
-
-Добавлены два workflow:
-
-- `.github/workflows/ci.yml` — запускает `compileall` и `pytest` на Linux, macOS и Windows для Python 3.11/3.12.
-- `.github/workflows/build.yml` — собирает Windows `.exe` и macOS `.app`, упаковывает их в zip и прикладывает к GitHub Release при пуше тега вида `v0.1.0`.
-
-Чтобы выпустить релиз:
-
-```bash
-git tag v0.1.0
-git push origin v0.1.0
-```
 
 ## Автообновление
 
