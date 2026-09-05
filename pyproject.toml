@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "midi-hype"
+version = "0.1.0"
+description = "GUI tool for generating MIDI/SysEx dumps for synthesizers"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PySide6>=6.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pyinstaller>=6",
+]
+
+[project.scripts]
+midi-hype = "midi_hype.app:main"
+
+[tool.setuptools.packages.find]
+include = ["midi_hype*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
