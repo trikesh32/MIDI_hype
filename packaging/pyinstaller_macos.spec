@@ -1,17 +1,17 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-from PyInstaller.utils.hooks import collect_submodules
+from pathlib import Path
 
 
 block_cipher = None
-hiddenimports = collect_submodules("PySide6")
+project_root = Path(SPECPATH).parent
 
 a = Analysis(
-    ["midi_hype/app.py"],
-    pathex=[],
+    [str(project_root / "midi_hype" / "app.py")],
+    pathex=[str(project_root)],
     binaries=[],
     datas=[],
-    hiddenimports=hiddenimports,
+    hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -54,4 +54,3 @@ app = BUNDLE(
     icon=None,
     bundle_identifier="com.midihype.app",
 )
-
